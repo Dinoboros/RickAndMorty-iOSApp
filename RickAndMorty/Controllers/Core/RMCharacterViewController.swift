@@ -9,6 +9,8 @@ import UIKit
 
 /// Controller to show and search for character
 final class RMCharacterViewController: UIViewController {
+    
+    private let characterListView = RMCharacterListView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,16 +18,13 @@ final class RMCharacterViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
         title = "Characters"
-        
-        RMService.shared.execute(.listCharactersRequests, expecting: RMGetAllCharactersResponse.self) { result in
-            switch result {
-            case .success(let character):
-                print("Total: \(character.info.count)")
-                print("Page result count : \(character.results.count)")
-            case .failure(let error):
-                print(String(describing: error))
-            }
-        }
+        view.addSubview(characterListView)
+        NSLayoutConstraint.activate([
+            characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            characterListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            characterListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
 
