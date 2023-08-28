@@ -23,12 +23,16 @@ final class CharacterListViewViewModel: NSObject {
 
 extension CharacterListViewViewModel: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .brown
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterListViewCell.cellIdentifier, for: indexPath) as? RMCharacterListViewCell else {
+            fatalError("Unsupporter cell")
+        }
+        
+        let viewModel = RMCharacterListViewCellViewModel(characterName: "Rick", characterStatus: .alive, characterImageUrl: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"))
+        cell.configure(with: viewModel)
         return cell
     }
     
