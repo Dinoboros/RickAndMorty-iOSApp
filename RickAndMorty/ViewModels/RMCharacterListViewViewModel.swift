@@ -16,6 +16,8 @@ final class RMCharacterListViewViewModel: NSObject {
     
     public weak var delegate: RMCharacterListViewViewModelDelegate?
     
+    private var isLoadingMore = false
+    
     private var characters: [RMCharacter] = [] {
         didSet {
             for character in characters {
@@ -86,12 +88,39 @@ extension RMCharacterListViewViewModel: UICollectionViewDelegate, UICollectionVi
         let character = characters[indexPath.row]
         delegate?.didSelectCharacter(character)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        guard shouldShowLoadMoreIndicator else {
+            return .zero
+        }
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter, shouldShowLoadMoreIndicator, let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RMFooterLoadingCollectionReusableView.identifier, for: indexPath) as? RMFooterLoadingCollectionReusableView else {
+            fatalError("Unsupported")
+        }
+        
+        footer.startAnimating()
+        
+        return footer
+    }
 }
 
 // MARK: - ScrollView
 
 extension RMCharacterListViewViewModel: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard shouldShowLoadMoreIndicator else { return }
+        guard shouldShowLoadMoreIndicator, !isLoadingMore else { return }
+        
+        let offset = scrollView.contentOffset.y
+        let totalContentHeight = scrollView.contentSize.height
+        let totalScrollViewHeight = scrollView.frame.size.height
+        
+        if offset >= (totalContentHeight - totalScrollViewHeight - 120) {
+            print("Should start fetching more")
+            isLoadingMore = true
+        }
     }
 }
