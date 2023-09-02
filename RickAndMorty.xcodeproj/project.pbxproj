@@ -36,6 +36,7 @@
 		1B2F7B6C2A9D414D000DE9AB /* RMCharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F7B6B2A9D414D000DE9AB /* RMCharacterDetailView.swift */; };
 		1B2F7B6E2A9D4164000DE9AB /* RMCharacterDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F7B6D2A9D4164000DE9AB /* RMCharacterDetailViewViewModel.swift */; };
 		1B2F7B702AA13DF7000DE9AB /* RMFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F7B6F2AA13DF7000DE9AB /* RMFooterLoadingCollectionReusableView.swift */; };
+		1B2F7B722AA38F79000DE9AB /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2F7B712AA38F79000DE9AB /* RMImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		1B2F7B6B2A9D414D000DE9AB /* RMCharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailView.swift; sourceTree = "<group>"; };
 		1B2F7B6D2A9D4164000DE9AB /* RMCharacterDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailViewViewModel.swift; sourceTree = "<group>"; };
 		1B2F7B6F2AA13DF7000DE9AB /* RMFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
+		1B2F7B712AA38F79000DE9AB /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		1B2F7B3B2A9BFD42000DE9AB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1B2F7B712AA38F79000DE9AB /* RMImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				1B2F7B272A9BFC01000DE9AB /* RMTabBarController.swift in Sources */,
 				1B2F7B492A9BFE34000DE9AB /* RMEpisodeViewController.swift in Sources */,
 				1B2F7B5F2A9D2B2A000DE9AB /* RMCharacterListViewViewModel.swift in Sources */,
+				1B2F7B722AA38F79000DE9AB /* RMImageLoader.swift in Sources */,
 				1B2F7B232A9BFC01000DE9AB /* AppDelegate.swift in Sources */,
 				1B2F7B402A9BFDA5000DE9AB /* RMEpisode.swift in Sources */,
 				1B2F7B4B2A9BFE3E000DE9AB /* RMSettingsViewController.swift in Sources */,
